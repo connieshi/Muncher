@@ -44,7 +44,6 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 }
 
 - (void) getRestaurants: (void (^) (void))completion {
-    
     PFQuery *query = [PFQuery queryWithClassName: @"Restaurant"];
     [query findObjectsInBackgroundWithBlock: ^(NSArray *objects, NSError *error) {
         if (!error) {
@@ -83,8 +82,22 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 // to get rid of it (eg: if you are building cards from data from the internet)
 -(DraggableView *)createDraggableViewWithDataAtIndex:(NSInteger)index
 {
-    DraggableView *draggableView = [[DraggableView alloc]initWithFrame:CGRectMake((self.frame.size.width - CARD_WIDTH)/2, (self.frame.size.height - CARD_HEIGHT)/2, CARD_WIDTH, CARD_HEIGHT)];
-    draggableView.information.text = [restaurants objectAtIndex:index]; //%%% placeholder for card-specific information
+    DraggableView *draggableView = [[DraggableView alloc]initWithFrame: CGRectMake((self.frame.size.width - CARD_WIDTH)/2, (self.frame.size.height - CARD_HEIGHT)/2, CARD_WIDTH, CARD_HEIGHT)];
+    
+    
+    PFObject *obj = [restaurants objectAtIndex:index];
+    PFFile *photoFile = [obj objectForKey:@"image"];
+    
+    [photoFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!error) {
+            UIImage *photo = [UIImage imageWithData:data];
+            draggableView.photo.image = photo;
+        }
+    }];
+    
+    draggableView.name.text = [obj objectForKey:@"name"];
+    draggableView.address.text = [obj objectForKey:@"address"];
+    draggableView.cuisine.text = [obj objectForKey:@"cuisine"];
     draggableView.delegate = self;
     return draggableView;
 }

@@ -26,7 +26,7 @@
 @synthesize delegate;
 
 @synthesize panGestureRecognizer;
-@synthesize information;
+@synthesize photo, name, address, cuisine;
 @synthesize overlayView;
 
 - (id)initWithFrame:(CGRect)frame
@@ -36,20 +36,19 @@
         [self setupView];
         
 #warning placeholder stuff, replace with card-specific information {
-        information = [[UILabel alloc]initWithFrame:CGRectMake(0, 50, self.frame.size.width, 100)];
-        information.text = @"no info given";
-        [information setTextAlignment:NSTextAlignmentCenter];
-        information.textColor = [UIColor blackColor];
-        
-        self.backgroundColor = [UIColor whiteColor];
+        photo = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, self.frame.size.width, 100)];
+        name = [[UILabel alloc] initWithFrame:CGRectMake(0, 160, self.frame.size.width, 50)];
+        address = [[UILabel alloc] initWithFrame:CGRectMake(0, 200, self.frame.size.width, 50)];
+        cuisine = [[UILabel alloc] initWithFrame:CGRectMake(0, 250, self.frame.size.width, 50)];
 #warning placeholder stuff, replace with card-specific information }
-        
-        
         
         panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(beingDragged:)];
         
         [self addGestureRecognizer:panGestureRecognizer];
-        [self addSubview:information];
+        [self addSubview:photo];
+        [self addSubview:name];
+        [self addSubview:address];
+        [self addSubview:cuisine];
         
         overlayView = [[OverlayView alloc]initWithFrame:CGRectMake(self.frame.size.width/2-100, 0, 100, 100)];
         overlayView.alpha = 0;
