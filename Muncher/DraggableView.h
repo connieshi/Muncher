@@ -33,6 +33,7 @@
 
 #import <UIKit/UIKit.h>
 #import "OverlayView.h"
+#import <Parse/Parse.h>
 
 @protocol DraggableViewDelegate <NSObject>
 
@@ -52,6 +53,7 @@
 @property (nonatomic,strong)UILabel* name;
 @property (nonatomic,strong)UILabel* address;
 @property (nonatomic,strong)UILabel* cuisine;
+@property (nonatomic,weak)PFObject* restaurant;
 
 -(void)leftClickAction;
 -(void)rightClickAction;

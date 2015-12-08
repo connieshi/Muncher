@@ -64,10 +64,10 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     [menuButton setImage:[UIImage imageNamed:@"menuButton"] forState:UIControlStateNormal];
     messageButton = [[UIButton alloc]initWithFrame:CGRectMake(284, 34, 18, 18)];
     [messageButton setImage:[UIImage imageNamed:@"messageButton"] forState:UIControlStateNormal];
-    xButton = [[UIButton alloc]initWithFrame:CGRectMake(60, 485, 59, 59)];
+    xButton = [[UIButton alloc]initWithFrame:CGRectMake(100, 600, 59, 59)];
     [xButton setImage:[UIImage imageNamed:@"xButton"] forState:UIControlStateNormal];
     [xButton addTarget:self action:@selector(swipeLeft) forControlEvents:UIControlEventTouchUpInside];
-    checkButton = [[UIButton alloc]initWithFrame:CGRectMake(200, 485, 59, 59)];
+    checkButton = [[UIButton alloc]initWithFrame:CGRectMake(250, 600, 59, 59)];
     [checkButton setImage:[UIImage imageNamed:@"checkButton"] forState:UIControlStateNormal];
     [checkButton addTarget:self action:@selector(swipeRight) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:menuButton];
@@ -98,6 +98,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     draggableView.name.text = [obj objectForKey:@"name"];
     draggableView.address.text = [obj objectForKey:@"address"];
     draggableView.cuisine.text = [obj objectForKey:@"cuisine"];
+    draggableView.restaurant = obj;
     draggableView.delegate = self;
     return draggableView;
 }
@@ -148,6 +149,9 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         cardsLoadedIndex++;//%%% loaded a card, so have to increment count
         [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-2)]];
     }
+    
+    DraggableView *view = (DraggableView*) card;
+    [self addToSeenOrLikes: view withRelation:@"seen"];
 }
 
 #warning include own action here!
@@ -165,7 +169,24 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
         cardsLoadedIndex++;//%%% loaded a card, so have to increment count
         [self insertSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-1)] belowSubview:[loadedCards objectAtIndex:(MAX_BUFFER_SIZE-2)]];
     }
+    
+    DraggableView *view = (DraggableView*) card;
+    [self addToSeenOrLikes: view withRelation:@"seen"];
+    [self addToSeenOrLikes: view withRelation:@"likes"];
+}
 
+-(void)addToSeenOrLikes:(DraggableView*) card withRelation:(NSString*)column {
+    PFUser *currentUser = [PFUser currentUser];
+    PFRelation *seenRelation = [currentUser relationForKey: column];
+    
+    [seenRelation addObject: card.restaurant];
+    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (succeeded) {
+            NSLog(@"Saved");
+        } else {
+            NSLog(@"Not saved");
+        }
+    }];
 }
 
 //%%% when you hit the right button, this is called and substitutes the swipe

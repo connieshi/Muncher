@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		301A392F06A307D191DF464C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3CBCCDD96774D06E8B47C7 /* libPods.a */; };
+		4D72E8A41C17568E009BF973 /* ShowLikesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D72E8A31C17568E009BF973 /* ShowLikesViewController.m */; };
+		4D72E8A71C1756A5009BF973 /* AddRestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D72E8A61C1756A5009BF973 /* AddRestaurantViewController.m */; };
+		4D72E8A91C176220009BF973 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D72E8A81C176220009BF973 /* loading.png */; };
 		4D77C6251C1618D100A58F25 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D77C6241C1618D100A58F25 /* main.m */; };
 		4D77C6281C1618D100A58F25 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D77C6271C1618D100A58F25 /* AppDelegate.m */; };
 		4D77C62B1C1618D100A58F25 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D77C62A1C1618D100A58F25 /* ViewController.m */; };
@@ -22,6 +25,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D72E8A21C17568E009BF973 /* ShowLikesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowLikesViewController.h; sourceTree = "<group>"; };
+		4D72E8A31C17568E009BF973 /* ShowLikesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowLikesViewController.m; sourceTree = "<group>"; };
+		4D72E8A51C1756A5009BF973 /* AddRestaurantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRestaurantViewController.h; sourceTree = "<group>"; };
+		4D72E8A61C1756A5009BF973 /* AddRestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRestaurantViewController.m; sourceTree = "<group>"; };
+		4D72E8A81C176220009BF973 /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
 		4D77C6201C1618D000A58F25 /* Muncher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Muncher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D77C6241C1618D100A58F25 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4D77C6261C1618D100A58F25 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -101,10 +109,15 @@
 				4D77C6291C1618D100A58F25 /* ViewController.h */,
 				4D77C62A1C1618D100A58F25 /* ViewController.m */,
 				4D77C62C1C1618D100A58F25 /* Main.storyboard */,
+				4D72E8A21C17568E009BF973 /* ShowLikesViewController.h */,
+				4D72E8A31C17568E009BF973 /* ShowLikesViewController.m */,
+				4D72E8A51C1756A5009BF973 /* AddRestaurantViewController.h */,
+				4D72E8A61C1756A5009BF973 /* AddRestaurantViewController.m */,
 				4D77C62F1C1618D100A58F25 /* Assets.xcassets */,
 				4D77C6431C161B1C00A58F25 /* Images.xcassets */,
 				4D77C6311C1618D100A58F25 /* LaunchScreen.storyboard */,
 				4D77C6341C1618D100A58F25 /* Info.plist */,
+				4D72E8A81C176220009BF973 /* loading.png */,
 				4D77C6231C1618D100A58F25 /* Supporting Files */,
 			);
 			path = Muncher;
@@ -189,6 +202,7 @@
 			files = (
 				4D77C6331C1618D100A58F25 /* LaunchScreen.storyboard in Resources */,
 				4D77C6441C161B1C00A58F25 /* Images.xcassets in Resources */,
+				4D72E8A91C176220009BF973 /* loading.png in Resources */,
 				4D77C6301C1618D100A58F25 /* Assets.xcassets in Resources */,
 				4D77C62E1C1618D100A58F25 /* Main.storyboard in Resources */,
 			);
@@ -253,6 +267,8 @@
 				4D77C6421C1619D800A58F25 /* OverlayView.m in Sources */,
 				4D77C6281C1618D100A58F25 /* AppDelegate.m in Sources */,
 				4D77C6471C161DA600A58F25 /* ParseStarterProjectAppDelegate.m in Sources */,
+				4D72E8A41C17568E009BF973 /* ShowLikesViewController.m in Sources */,
+				4D72E8A71C1756A5009BF973 /* AddRestaurantViewController.m in Sources */,
 				4D77C63E1C16197600A58F25 /* DraggableView.m in Sources */,
 				4D77C6251C1618D100A58F25 /* main.m in Sources */,
 				4D77C63F1C16197600A58F25 /* DraggableViewBackground.m in Sources */,

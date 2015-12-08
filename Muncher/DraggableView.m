@@ -40,6 +40,8 @@
         name = [[UILabel alloc] initWithFrame:CGRectMake(0, 160, self.frame.size.width, 50)];
         address = [[UILabel alloc] initWithFrame:CGRectMake(0, 200, self.frame.size.width, 50)];
         cuisine = [[UILabel alloc] initWithFrame:CGRectMake(0, 250, self.frame.size.width, 50)];
+        
+        self.backgroundColor = [UIColor whiteColor];
 #warning placeholder stuff, replace with card-specific information }
         
         panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(beingDragged:)];

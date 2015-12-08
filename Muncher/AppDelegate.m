@@ -21,7 +21,17 @@
     
     [Parse setApplicationId:@"tc6OGywzNcYXbGPdczxTWdq8yi942HWpTSTbtftI"
                   clientKey:@"RejBqE8K7uZBz6jPDVR1VySJV17xtPVN9fMV468l"];
-
+    
+    if (![PFUser currentUser]) {
+        [PFAnonymousUtils logInWithBlock:^(PFUser *user, NSError *error) {
+            if (error) {
+                NSLog(@"Anonymous login failed.");
+            } else {
+                NSLog(@"Anonymous user logged in.");
+            }
+        }];
+    }
+    
     // Override point for customization after application launch.
     return YES;
 }
