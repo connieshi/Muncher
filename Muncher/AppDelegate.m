@@ -24,7 +24,6 @@
     
     //testing purposes
     //[PFUser logOut];
-    //[PFUser logOut]; //<-- uncomment
     
     if (![PFUser currentUser]) {
         [PFAnonymousUtils logInWithBlock:^(PFUser *user, NSError *error) {

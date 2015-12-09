@@ -16,6 +16,11 @@
 
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    self.view.backgroundColor = [[UIColor alloc] initWithRed:.92 green:.93 blue:.95 alpha:1]; //the gray background colors
+}
+
 
 - (IBAction)selectPhoto:(id)sender {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
@@ -39,6 +44,34 @@
 }
 
 - (IBAction)submit:(id)sender {
+    if (!restaurantName.hasText || !address.hasText || !cuisine.hasText || !price.hasText || !phone.hasText
+        || photo.image == nil){
+        UIAlertController * alert=   [UIAlertController
+                                      alertControllerWithTitle:@"Missing Restaurant Info!"
+                                      message:@"Please input all fields for the new restaurant before submitting."
+                                      preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction* yesButton = [UIAlertAction
+                                    actionWithTitle:@"OK"
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction * action)
+                                    {
+                                        //Handle your yes please button action here
+                                        [alert dismissViewControllerAnimated:YES completion:nil];
+                                        
+                                    }];
+        
+        
+        [alert addAction:yesButton];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    if (restaurantName.hasText == 1) {
+        NSLog (@"has text");
+    }
+    else {
+        NSLog (@"no text");
+    }
     PFObject *restaurant = [PFObject objectWithClassName:@"Restaurant"];
     restaurant[@"name"] = restaurantName.text;
     restaurant[@"address"] = address.text;

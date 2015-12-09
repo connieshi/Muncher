@@ -15,14 +15,17 @@
 
 @synthesize tableView;
 
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self getLikes: ^(void) {
         [tableView reloadData];
     }];
+    
     NSLog(@"appeared!");
 }
+
 
 -(void) getLikes: (void (^) (void))completion {
     likes = [[NSMutableArray alloc] init];
@@ -40,6 +43,7 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger) section {
     NSLog(@"%lu", (unsigned long)[likes count]);
+
     return [likes count];
 }
 
@@ -74,6 +78,26 @@
     }];
     
     return cell;
+}
+
+-(BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+-(void) tableView:(UITableView*)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        PFObject *object = [likes objectAtIndex:indexPath.row];
+        [likes removeObjectAtIndex:indexPath.row];
+        
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+        [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!succeeded){
+                //we had an error
+                // gives the error log and also how it relates to the user.
+                NSLog(@"error");
+                      }
+                      }];
+    }
 }
 
 @end

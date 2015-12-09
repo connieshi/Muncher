@@ -24,6 +24,10 @@
 		4D77C6421C1619D800A58F25 /* OverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D77C6411C1619D800A58F25 /* OverlayView.m */; };
 		4D77C6441C161B1C00A58F25 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D77C6431C161B1C00A58F25 /* Images.xcassets */; };
 		4D77C6471C161DA600A58F25 /* ParseStarterProjectAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D77C6461C161DA600A58F25 /* ParseStarterProjectAppDelegate.m */; };
+		A2725B9B1C18D5960094AEB7 /* addRest.png in Resources */ = {isa = PBXBuildFile; fileRef = A2725B9A1C18D5960094AEB7 /* addRest.png */; };
+		A27B46E31C18B7140009FABB /* Spaghetti-24.png in Resources */ = {isa = PBXBuildFile; fileRef = A27B46E21C18B7140009FABB /* Spaghetti-24.png */; };
+		A27B46E51C18B72B0009FABB /* Plus Math-26.png in Resources */ = {isa = PBXBuildFile; fileRef = A27B46E41C18B72B0009FABB /* Plus Math-26.png */; };
+		A27B46E71C18B7300009FABB /* Checkmark-26.png in Resources */ = {isa = PBXBuildFile; fileRef = A27B46E61C18B7300009FABB /* Checkmark-26.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +59,10 @@
 		4D77C6461C161DA600A58F25 /* ParseStarterProjectAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseStarterProjectAppDelegate.m; sourceTree = "<group>"; };
 		5788AE3B1DB0B3F725C59F70 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9F3CBCCDD96774D06E8B47C7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2725B9A1C18D5960094AEB7 /* addRest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addRest.png; sourceTree = "<group>"; };
+		A27B46E21C18B7140009FABB /* Spaghetti-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Spaghetti-24.png"; sourceTree = "<group>"; };
+		A27B46E41C18B72B0009FABB /* Plus Math-26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus Math-26.png"; sourceTree = "<group>"; };
+		A27B46E61C18B7300009FABB /* Checkmark-26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Checkmark-26.png"; sourceTree = "<group>"; };
 		CB474A2626670CDF09D59C6E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,8 +128,12 @@
 				4D77C62F1C1618D100A58F25 /* Assets.xcassets */,
 				4D77C6431C161B1C00A58F25 /* Images.xcassets */,
 				4D77C6311C1618D100A58F25 /* LaunchScreen.storyboard */,
+				A27B46E61C18B7300009FABB /* Checkmark-26.png */,
 				4D1A4EE41C17A103006C47B1 /* applogo.png */,
+				A27B46E41C18B72B0009FABB /* Plus Math-26.png */,
 				4D1A4EE21C179EFF006C47B1 /* logo.png */,
+				A2725B9A1C18D5960094AEB7 /* addRest.png */,
+				A27B46E21C18B7140009FABB /* Spaghetti-24.png */,
 				4D77C6341C1618D100A58F25 /* Info.plist */,
 				4D72E8A81C176220009BF973 /* loading.png */,
 				4D77C6231C1618D100A58F25 /* Supporting Files */,
@@ -209,10 +221,14 @@
 				4D1A4EE31C179EFF006C47B1 /* logo.png in Resources */,
 				4D77C6331C1618D100A58F25 /* LaunchScreen.storyboard in Resources */,
 				4D77C6441C161B1C00A58F25 /* Images.xcassets in Resources */,
+				A2725B9B1C18D5960094AEB7 /* addRest.png in Resources */,
 				4D72E8A91C176220009BF973 /* loading.png in Resources */,
 				4D77C6301C1618D100A58F25 /* Assets.xcassets in Resources */,
+				A27B46E51C18B72B0009FABB /* Plus Math-26.png in Resources */,
 				4D1A4EE51C17A103006C47B1 /* applogo.png in Resources */,
 				4D77C62E1C1618D100A58F25 /* Main.storyboard in Resources */,
+				A27B46E31C18B7140009FABB /* Spaghetti-24.png in Resources */,
+				A27B46E71C18B7300009FABB /* Checkmark-26.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
