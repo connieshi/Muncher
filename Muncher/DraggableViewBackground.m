@@ -56,30 +56,18 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 }
 
 - (void) getRestaurants: (void (^) (void))completion {
-    PFQuery *query = [PFQuery queryWithClassName: @"Restaurant"];
-   
-    [query findObjectsInBackgroundWithBlock: ^(NSArray *objects, NSError *error) {
+    PFUser *user = [PFUser currentUser];
+    
+    PFQuery *queryAll = [PFQuery queryWithClassName: @"Restaurant"];
+    
+    PFRelation *relation = [user relationForKey:@"seen"];
+    PFQuery *querySeen = [relation query];
+    
+    [queryAll whereKey:@"objectId" doesNotMatchKey:@"objectId" inQuery:querySeen];
+    
+    [queryAll findObjectsInBackgroundWithBlock: ^(NSArray *objects, NSError *error) {
         if (!error) {
-            allRestaurants = [[NSMutableArray alloc] initWithArray: objects];
-            
-            /*
-            PFRelation *seenRelation = [currentUser relationForKey:@"seen"];
-            [[seenRelation query] findObjectsInBackgroundWithBlock: ^(NSArray *objects, NSError *error) {
-                if (!error) {
-                    seen = [[NSMutableArray alloc] initWithArray: objects];
-                    
-                    restaurants = [[NSMutableArray alloc] init];
-                    for (PFObject *obj in allRestaurants) {
-                        if (![seen containsObject:obj]) {
-                            [restaurants addObject:obj];
-                        }
-                    }
-                } else {
-                    NSLog(@"noooo :(");
-                }
-            }];*/
-            
-            restaurants = allRestaurants; //take this out after getting the diff
+            restaurants = [[NSMutableArray alloc] initWithArray: objects];
             completion();
         } else {
             NSLog(@"noooo :(");
