@@ -37,13 +37,17 @@
         
         photo = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 200)];
         
-        name = [[UILabel alloc] initWithFrame:CGRectMake(20, 250, self.frame.size.width, 50)];
-        [[self name] setFont:[UIFont fontWithName:@"HelveticaNeue" size:30]];
+        name = [[UILabel alloc] initWithFrame:CGRectMake(20, 220, self.frame.size.width-40, 50)];
+        [[self name] setFont:[UIFont fontWithName:@"HelveticaNeue" size:25]];
+        name.numberOfLines = 0;
+        name.lineBreakMode = NSLineBreakByWordWrapping;
         
-        address = [[UILabel alloc] initWithFrame:CGRectMake(20, 280, self.frame.size.width, 50)];
+        address = [[UILabel alloc] initWithFrame:CGRectMake(20, 250, self.frame.size.width-40, 100)];
         [[self address] setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20]];
+        address.numberOfLines = 0;
+        address.lineBreakMode = NSLineBreakByWordWrapping;
         
-        cuisine = [[UILabel alloc] initWithFrame:CGRectMake(20, 300, self.frame.size.width, 50)];
+        cuisine = [[UILabel alloc] initWithFrame:CGRectMake(20, 320, self.frame.size.width-40, 50)];
         [[self cuisine] setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20]];
         
         self.backgroundColor = [UIColor whiteColor];

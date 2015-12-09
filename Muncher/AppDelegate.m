@@ -23,7 +23,7 @@
                   clientKey:@"RejBqE8K7uZBz6jPDVR1VySJV17xtPVN9fMV468l"];
     
     //testing purposes
-//    [PFUser logOut];
+    //[PFUser logOut];
     
     if (![PFUser currentUser]) {
         [PFAnonymousUtils logInWithBlock:^(PFUser *user, NSError *error) {

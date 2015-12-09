@@ -56,8 +56,6 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 }
 
 - (void) getRestaurants: (void (^) (void))completion {
-    PFUser *currentUser = [PFUser user];
-    
     PFQuery *query = [PFQuery queryWithClassName: @"Restaurant"];
     [query findObjectsInBackgroundWithBlock: ^(NSArray *objects, NSError *error) {
         if (!error) {
