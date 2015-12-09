@@ -15,12 +15,13 @@
 
 @synthesize tableView;
 
-- (void)viewDidLoad {
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self getLikes: ^(void) {
         [tableView reloadData];
     }];
+    NSLog(@"appeared!");
 }
 
 -(void) getLikes: (void (^) (void))completion {
@@ -38,25 +39,37 @@
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger) section {
+    NSLog(@"%lu", (unsigned long)[likes count]);
     return [likes count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     
     PFObject *obj = [likes objectAtIndex: indexPath.row];
-    NSString* name = [obj objectForKey:@"name"];
-    cell.textLabel.text = name;
-    cell.imageView.image = [UIImage imageNamed:@"loading.png"];
+
+    UIImageView *imageView = (UIImageView*)[cell viewWithTag:100];
+    imageView.image = [UIImage imageNamed:@"loading.png"];
+    
+    UILabel *name = (UILabel*)[cell viewWithTag:101];
+    name.text = [obj objectForKey:@"name"];
+    
+    UILabel *address = (UILabel*)[cell viewWithTag:102];
+    address.text = [obj objectForKey:@"address"];
+    
+    UILabel *cuisine = (UILabel*)[cell viewWithTag:103];
+    cuisine.text = [obj objectForKey:@"cuisine"];
     
     PFFile *photoFile = [obj objectForKey:@"image"];
     [photoFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!error) {
             UIImage *photo = [UIImage imageWithData:data];
-            cell.imageView.image = photo;
+            imageView.image = photo;
         }
     }];
     

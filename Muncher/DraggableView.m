@@ -35,15 +35,18 @@
     if (self) {
         [self setupView];
         
-#warning placeholder stuff, replace with card-specific information {
-        photo = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, self.frame.size.width, 100)];
-        name = [[UILabel alloc] initWithFrame:CGRectMake(0, 160, self.frame.size.width, 50)];
-        address = [[UILabel alloc] initWithFrame:CGRectMake(0, 200, self.frame.size.width, 50)];
-        cuisine = [[UILabel alloc] initWithFrame:CGRectMake(0, 250, self.frame.size.width, 50)];
+        photo = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 200)];
+        
+        name = [[UILabel alloc] initWithFrame:CGRectMake(20, 250, self.frame.size.width, 50)];
+        [[self name] setFont:[UIFont fontWithName:@"HelveticaNeue" size:30]];
+        
+        address = [[UILabel alloc] initWithFrame:CGRectMake(20, 280, self.frame.size.width, 50)];
+        [[self address] setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20]];
+        
+        cuisine = [[UILabel alloc] initWithFrame:CGRectMake(20, 300, self.frame.size.width, 50)];
+        [[self cuisine] setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:20]];
         
         self.backgroundColor = [UIColor whiteColor];
-#warning placeholder stuff, replace with card-specific information }
-        
         panGestureRecognizer = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(beingDragged:)];
         
         [self addGestureRecognizer:panGestureRecognizer];

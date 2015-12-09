@@ -11,9 +11,9 @@
 @implementation DraggableViewBackground{
     NSInteger cardsLoadedIndex; //%%% the index of the card you have loaded into the loadedCards array last
     NSMutableArray *loadedCards; //%%% the array of card loaded (change max_buffer_size to increase or decrease the number of cards this holds)
+    NSMutableArray *seen;
+    NSMutableArray *allRestaurants;
     
-    UIButton* menuButton;
-    UIButton* messageButton;
     UIButton* checkButton;
     UIButton* xButton;
 }
@@ -40,14 +40,47 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
             [self loadCards];
         }];
     }
+    
+    UIImageView* logoView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 0, 370, 240)];
+    UIImage *photo = [UIImage imageNamed:@"logo.png"];
+    logoView.image = photo;
+    
+    UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(80, 300, 600, 100)];
+    label.text = @"No more restaurants!";
+    [label setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:30]];
+    [label setTextColor: [UIColor blackColor]];
+    
+    [self addSubview: logoView];
+    [self addSubview: label];
     return self;
 }
 
 - (void) getRestaurants: (void (^) (void))completion {
+    PFUser *currentUser = [PFUser user];
+    
     PFQuery *query = [PFQuery queryWithClassName: @"Restaurant"];
     [query findObjectsInBackgroundWithBlock: ^(NSArray *objects, NSError *error) {
         if (!error) {
-            restaurants = [[NSMutableArray alloc] initWithArray: objects];
+            allRestaurants = [[NSMutableArray alloc] initWithArray: objects];
+            
+            /*
+            PFRelation *seenRelation = [currentUser relationForKey:@"seen"];
+            [[seenRelation query] findObjectsInBackgroundWithBlock: ^(NSArray *objects, NSError *error) {
+                if (!error) {
+                    seen = [[NSMutableArray alloc] initWithArray: objects];
+                    
+                    restaurants = [[NSMutableArray alloc] init];
+                    for (PFObject *obj in allRestaurants) {
+                        if (![seen containsObject:obj]) {
+                            [restaurants addObject:obj];
+                        }
+                    }
+                } else {
+                    NSLog(@"noooo :(");
+                }
+            }]; */
+            
+            restaurants = allRestaurants; //take this out after getting the diff
             completion();
         } else {
             NSLog(@"noooo :(");
@@ -58,25 +91,18 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
 //%%% sets up the extra buttons on the screen
 -(void)setupView
 {
-#warning customize all of this.  These are just place holders to make it look pretty
     self.backgroundColor = [UIColor colorWithRed:.92 green:.93 blue:.95 alpha:1]; //the gray background colors
-    menuButton = [[UIButton alloc]initWithFrame:CGRectMake(17, 34, 22, 15)];
-    [menuButton setImage:[UIImage imageNamed:@"menuButton"] forState:UIControlStateNormal];
-    messageButton = [[UIButton alloc]initWithFrame:CGRectMake(284, 34, 18, 18)];
-    [messageButton setImage:[UIImage imageNamed:@"messageButton"] forState:UIControlStateNormal];
     xButton = [[UIButton alloc]initWithFrame:CGRectMake(100, 600, 59, 59)];
     [xButton setImage:[UIImage imageNamed:@"xButton"] forState:UIControlStateNormal];
     [xButton addTarget:self action:@selector(swipeLeft) forControlEvents:UIControlEventTouchUpInside];
     checkButton = [[UIButton alloc]initWithFrame:CGRectMake(250, 600, 59, 59)];
     [checkButton setImage:[UIImage imageNamed:@"checkButton"] forState:UIControlStateNormal];
     [checkButton addTarget:self action:@selector(swipeRight) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:menuButton];
-    [self addSubview:messageButton];
+
     [self addSubview:xButton];
     [self addSubview:checkButton];
 }
 
-#warning include own card customization here!
 //%%% creates a card and returns it.  This should be customized to fit your needs.
 // use "index" to indicate where the information should be pulled.  If this doesn't apply to you, feel free
 // to get rid of it (eg: if you are building cards from data from the internet)
@@ -134,7 +160,6 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     }
 }
 
-#warning include own action here!
 //%%% action called when the card goes to the left.
 // This should be customized with your own action
 -(void)cardSwipedLeft:(UIView *)card;
@@ -154,7 +179,6 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     [self addToSeenOrLikes: view withRelation:@"seen"];
 }
 
-#warning include own action here!
 //%%% action called when the card goes to the right.
 // This should be customized with your own action
 -(void)cardSwipedRight:(UIView *)card

@@ -22,6 +22,9 @@
     [Parse setApplicationId:@"tc6OGywzNcYXbGPdczxTWdq8yi942HWpTSTbtftI"
                   clientKey:@"RejBqE8K7uZBz6jPDVR1VySJV17xtPVN9fMV468l"];
     
+    //testing purposes
+//    [PFUser logOut];
+    
     if (![PFUser currentUser]) {
         [PFAnonymousUtils logInWithBlock:^(PFUser *user, NSError *error) {
             if (error) {

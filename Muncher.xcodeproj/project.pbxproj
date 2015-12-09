@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		301A392F06A307D191DF464C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F3CBCCDD96774D06E8B47C7 /* libPods.a */; };
+		4D1A4EE31C179EFF006C47B1 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1A4EE21C179EFF006C47B1 /* logo.png */; };
+		4D1A4EE51C17A103006C47B1 /* applogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D1A4EE41C17A103006C47B1 /* applogo.png */; };
 		4D72E8A41C17568E009BF973 /* ShowLikesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D72E8A31C17568E009BF973 /* ShowLikesViewController.m */; };
 		4D72E8A71C1756A5009BF973 /* AddRestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D72E8A61C1756A5009BF973 /* AddRestaurantViewController.m */; };
 		4D72E8A91C176220009BF973 /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D72E8A81C176220009BF973 /* loading.png */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D1A4EE21C179EFF006C47B1 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		4D1A4EE41C17A103006C47B1 /* applogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = applogo.png; sourceTree = "<group>"; };
 		4D72E8A21C17568E009BF973 /* ShowLikesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowLikesViewController.h; sourceTree = "<group>"; };
 		4D72E8A31C17568E009BF973 /* ShowLikesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowLikesViewController.m; sourceTree = "<group>"; };
 		4D72E8A51C1756A5009BF973 /* AddRestaurantViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRestaurantViewController.h; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 				4D77C62F1C1618D100A58F25 /* Assets.xcassets */,
 				4D77C6431C161B1C00A58F25 /* Images.xcassets */,
 				4D77C6311C1618D100A58F25 /* LaunchScreen.storyboard */,
+				4D1A4EE41C17A103006C47B1 /* applogo.png */,
+				4D1A4EE21C179EFF006C47B1 /* logo.png */,
 				4D77C6341C1618D100A58F25 /* Info.plist */,
 				4D72E8A81C176220009BF973 /* loading.png */,
 				4D77C6231C1618D100A58F25 /* Supporting Files */,
@@ -200,10 +206,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D1A4EE31C179EFF006C47B1 /* logo.png in Resources */,
 				4D77C6331C1618D100A58F25 /* LaunchScreen.storyboard in Resources */,
 				4D77C6441C161B1C00A58F25 /* Images.xcassets in Resources */,
 				4D72E8A91C176220009BF973 /* loading.png in Resources */,
 				4D77C6301C1618D100A58F25 /* Assets.xcassets in Resources */,
+				4D1A4EE51C17A103006C47B1 /* applogo.png in Resources */,
 				4D77C62E1C1618D100A58F25 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
