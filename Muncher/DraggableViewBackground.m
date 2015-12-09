@@ -59,6 +59,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
     PFUser *currentUser = [PFUser user];
     
     PFQuery *query = [PFQuery queryWithClassName: @"Restaurant"];
+   
     [query findObjectsInBackgroundWithBlock: ^(NSArray *objects, NSError *error) {
         if (!error) {
             allRestaurants = [[NSMutableArray alloc] initWithArray: objects];
@@ -78,7 +79,7 @@ static const float CARD_WIDTH = 290; //%%% width of the draggable card
                 } else {
                     NSLog(@"noooo :(");
                 }
-            }]; */
+            }];*/
             
             restaurants = allRestaurants; //take this out after getting the diff
             completion();
