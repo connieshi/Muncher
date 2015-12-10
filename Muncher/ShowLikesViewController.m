@@ -69,6 +69,9 @@
     UILabel *cuisine = (UILabel*)[cell viewWithTag:103];
     cuisine.text = [obj objectForKey:@"cuisine"];
     
+    UILabel *phone = (UILabel*)[cell viewWithTag:104];
+    phone.text = [obj objectForKey:@"phone"];
+    
     PFFile *photoFile = [obj objectForKey:@"image"];
     [photoFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
         if (!error) {
