@@ -1,6 +1,7 @@
 //
 //  OverlayView.m
-//  testing swiping
+//  testing swiping, included in the API
+//  https://github.com/cwRichardKim/TinderSimpleSwipeCards
 //
 //  Created by Richard Kim on 5/22/14.
 //  Copyright (c) 2014 Richard Kim. All rights reserved.
@@ -43,14 +44,5 @@
     [super layoutSubviews];
     imageView.frame = CGRectMake(50, 50, 100, 100);
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

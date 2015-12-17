@@ -8,22 +8,9 @@
  */
 
 #import <Parse/Parse.h>
-
-// If you want to use any of the UI components, uncomment this line
-// #import <ParseUI/ParseUI.h>
-
-// If you are using Facebook, uncomment this line
-// #import <ParseFacebookUtils/PFFacebookUtils.h>
-
-// If you want to use Crash Reporting - uncomment this line
-// #import <ParseCrashReporting/ParseCrashReporting.h>
-
 #import "ParseStarterProjectAppDelegate.h"
 
 @implementation ParseStarterProjectAppDelegate
-
-#pragma mark -
-#pragma mark UIApplicationDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Enable storing and querying data from Local Datastore. Remove this line if you don't want to
@@ -32,11 +19,6 @@
 
     [Parse setApplicationId:@"tc6OGywzNcYXbGPdczxTWdq8yi942HWpTSTbtftI"
                   clientKey:@"RejBqE8K7uZBz6jPDVR1VySJV17xtPVN9fMV468l"];
-    
-    // If you are using Facebook, uncomment and add your FacebookAppID to your bundle's plist as
-    // described here: https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/
-    // [PFFacebookUtils initializeFacebook];
-    // ****************************************************************************
 
     [PFUser enableAutomaticUser];
 
@@ -64,7 +46,6 @@
         }
     }
 
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
                                                         UIUserNotificationTypeBadge |
@@ -73,9 +54,7 @@
                                                                                  categories:nil];
         [application registerUserNotificationSettings:settings];
         [application registerForRemoteNotifications];
-    } else
-#endif
-    {
+    } else {
         [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
                                                          UIRemoteNotificationTypeAlert |
                                                          UIRemoteNotificationTypeSound)];
@@ -83,8 +62,6 @@
 
     return YES;
 }
-
-#pragma mark Push Notifications
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
@@ -116,26 +93,5 @@
         [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
     }
 }
-
-///////////////////////////////////////////////////////////
-// Uncomment this method if you want to use Push Notifications with Background App Refresh
-///////////////////////////////////////////////////////////
-//- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-//    if (application.applicationState == UIApplicationStateInactive) {
-//        [PFAnalytics trackAppOpenedWithRemoteNotificationPayload:userInfo];
-//    }
-//}
-
-#pragma mark Facebook SDK Integration
-
-///////////////////////////////////////////////////////////
-// Uncomment this method if you are using Facebook
-///////////////////////////////////////////////////////////
-//- (BOOL)application:(UIApplication *)application
-//            openURL:(NSURL *)url
-//  sourceApplication:(NSString *)sourceApplication
-//         annotation:(id)annotation {
-//    return [PFFacebookUtils handleOpenURL:url];
-//}
 
 @end
